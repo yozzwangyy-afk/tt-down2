@@ -3,292 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TikTok Downloader • Pink Premium</title>
+<title>TikTok Downloader</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
---bg:#0a0a0f;
---glass:rgba(255,255,255,.04);
---border:rgba(255,107,157,.25);
---pink:#ff6b9d;
---pink-soft:#ff9ad5;
---text:#fff;
---text-dim:#e2c2cc;
---grad:linear-gradient(135deg,#ff6b9d,#ff9ad5,#ffc2e2);
-}
-
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Poppins,sans-serif;
-background:var(--bg);
-color:var(--text);
+font-family:Arial,Helvetica,sans-serif;
+background:#0a0a0f;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
 min-height:100vh;
 }
-
-/* REDUCE MOTION */
-@media (prefers-reduced-motion:reduce){
-*{animation:none!important;transition:none!important}
-}
-
-/* BACKGROUND */
-.bg{
-position:fixed;inset:0;z-index:-1;
-background:
-radial-gradient(circle at 20% 80%,rgba(255,107,157,.15),transparent 50%),
-radial-gradient(circle at 80% 20%,rgba(199,36,254,.12),transparent 50%);
-}
-
-/* GLASS */
-.glass{
-background:var(--glass);
-backdrop-filter:blur(22px);
-border:1px solid var(--border);
-border-radius:20px;
-}
-
-/* LAYOUT */
-.app{
-max-width:1200px;
-margin:auto;
-padding:20px;
-display:grid;
-grid-template-columns:1.4fr 1fr;
-gap:24px;
-}
-@media(max-width:900px){
-.app{grid-template-columns:1fr}
-}
-
-/* HEADER */
-.badge{
-display:inline-flex;gap:8px;
-padding:8px 16px;
-border-radius:999px;
-background:rgba(255,107,157,.15);
-border:1px solid var(--border);
-color:var(--pink-soft);
-font-weight:600;
-font-size:.8rem;
-}
-h1{
-font-family:"Space Grotesk";
-font-size:clamp(2rem,4vw,3.2rem);
-margin:15px 0 10px;
-background:var(--grad);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-.subtitle{
-max-width:620px;
-opacity:.85;
-line-height:1.5;
-}
-
-/* INPUT AREA */
-.input-box{
-margin-top:25px;
-padding:22px;
-border-radius:22px;
-background:rgba(255,107,157,.06);
-border:1px solid var(--border);
-}
-.input-wrap{position:relative}
-.input-wrap i{
-position:absolute;
-left:18px;top:50%;
-transform:translateY(-50%);
-color:var(--pink);
-}
-input{
+.box{
 width:100%;
-padding:16px 18px 16px 48px;
-border-radius:16px;
-border:2px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.04);
-color:#fff;
-font-size:1rem;
+max-width:420px;
+padding:24px;
+background:rgba(255,255,255,.05);
+border-radius:18px;
+border:1px solid rgba(255,107,157,.3);
 }
-input:focus{
-outline:none;
-border-color:var(--pink);
-box-shadow:0 0 0 4px rgba(255,107,157,.15);
-}
-
-/* BUTTON */
-.btn{
-margin-top:15px;
+input,button{
 width:100%;
-padding:16px;
-border-radius:16px;
-border:none;
-cursor:pointer;
-font-weight:700;
-letter-spacing:.5px;
-background:var(--grad);
-color:#fff;
-transition:.3s;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:scale(.97)}
-
-/* RESULT */
-.result{display:none;margin-top:20px}
-.card{padding:20px}
-.thumb{
-aspect-ratio:9/16;
-border-radius:14px;
-overflow:hidden;
-box-shadow:0 15px 30px rgba(0,0,0,.4);
-}
-.thumb img{
-width:100%;height:100%;object-fit:cover;
-transition:.4s;
-}
-.thumb:hover img{transform:scale(1.05)}
-.actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:15px;
-}
-.action{
 padding:14px;
 border-radius:14px;
-font-weight:600;
-cursor:pointer;
 border:none;
+margin-top:12px;
+font-size:1rem;
 }
-.primary{background:var(--grad);color:#fff}
-.secondary{
-background:rgba(255,255,255,.05);
-border:2px solid var(--border);
+input{
+background:#111;
 color:#fff;
 }
-.secondary:hover{background:rgba(255,107,157,.15)}
-
-/* SIDEBAR */
-.stats{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
+button{
+background:linear-gradient(135deg,#ff6b9d,#ff9ad5);
+color:#fff;
+font-weight:700;
+cursor:pointer;
 }
-.stat{
-padding:18px;
-text-align:center;
-}
-.stat b{
-font-family:"Space Grotesk";
-font-size:1.8rem;
-background:var(--grad);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-/* LOG */
+button:active{transform:scale(.97)}
 .log{
-margin-top:20px;
-padding:18px;
-}
-.log-entry{
-font-size:.8rem;
-padding:8px;
-margin-bottom:6px;
-background:rgba(255,255,255,.03);
-border-left:3px solid var(--pink);
-border-radius:8px;
-opacity:.9;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-opacity:.5;
-font-size:.75rem;
-margin-top:30px;
+margin-top:12px;
+font-size:.85rem;
+opacity:.8;
 }
 </style>
 </head>
 
 <body>
-<div class="bg"></div>
+<div class="box">
+<h2>TikTok Downloader</h2>
 
-<div class="app">
-<main>
-<span class="badge glass"><i class="fas fa-sparkles"></i> PREMIUM v3.5</span>
-<h1>Download TikTok<br><span style="font-size:.85em">Pink Edition</span></h1>
-<p class="subtitle">
-Download video TikTok <b>tanpa watermark</b> kualitas <b>HD</b> & <b>MP3</b>.  
-Cepat, aman, tanpa login.
-</p>
-
-<div class="input-box glass">
-<div class="input-wrap">
-<i class="fas fa-link"></i>
 <input id="url" placeholder="Tempel link TikTok di sini">
-</div>
-<button class="btn" onclick="process()">Extract Video</button>
-</div>
 
-<div class="result" id="result">
-<div class="card glass">
-<div class="thumb"><img id="thumb"></div>
-<h3 id="title"></h3>
-<p id="author"></p>
-<div class="actions">
-<button class="action primary" id="hd">Download HD</button>
-<button class="action secondary" id="mp3">MP3 Audio</button>
-</div>
-</div>
-</div>
-</main>
+<button onclick="process()">Download</button>
 
-<aside>
-<div class="stats">
-<div class="stat glass"><b>2.4K</b><br>Users</div>
-<div class="stat glass"><b>99.9%</b><br>Success</div>
-<div class="stat glass"><b>3.2M</b><br>Downloads</div>
-<div class="stat glass"><b>24/7</b><br>Online</div>
+<div class="log" id="log"></div>
 </div>
-
-<div class="log glass" id="log"></div>
-</aside>
-</div>
-
-<footer>© 2025 TikTok Downloader • Made with 💖</footer>
 
 <script>
 async function process(){
-const url=document.getElementById("url").value;
-if(!url||!url.includes("tiktok"))return alert("Link TikTok tidak valid");
+  const url = document.getElementById("url").value.trim();
+  const log = document.getElementById("log");
 
-document.getElementById("log").innerHTML+="<div class='log-entry'>Processing link...</div>";
+  if(!url || !url.includes("tiktok")){
+    log.innerText = "Link TikTok tidak valid";
+    return;
+  }
 
-const r=await fetch("https://www.tikwm.com/api/?url="+encodeURIComponent(url));
-const j=await r.json();
-if(j.data){
-document.getElementById("thumb").src=j.data.cover;
-document.getElementById("title").innerText=j.data.title;
-document.getElementById("author").innerText="@"+j.data.author.nickname;
-document.getElementById("hd").onclick=()=>window.open(j.data.play);
-document.getElementById("mp3").onclick=()=>window.open(j.data.music);
-document.getElementById("result").style.display="block";
-document.getElementById("log").innerHTML+="<div class='log-entry'>Done ✔</div>";
-}
+  log.innerText = "Mengambil data...";
+
+  try{
+    const r = await fetch(
+      "https://www.tikwm.com/api/?url=" + encodeURIComponent(url)
+    );
+    const j = await r.json();
+
+    if(!j.data){
+      log.innerText = "Gagal mengambil video";
+      return;
+    }
+
+    // AUTO DOWNLOAD VIDEO HD
+    const downloadUrl =
+      "/api/download?url=" +
+      encodeURIComponent(j.data.play) +
+      "&filename=tiktok-video.mp4";
+
+    const a = document.createElement("a");
+    a.href = downloadUrl;
+    a.download = "tiktok-video.mp4";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    log.innerText = "Download dimulai...";
+  }catch(e){
+    log.innerText = "Terjadi error";
+  }
 }
 
 /* AUTO PASTE CLIPBOARD */
-window.addEventListener("load",async()=>{
-try{
-const t=await navigator.clipboard.readText();
-if(t.includes("tiktok")){
-document.getElementById("url").value=t;
-document.getElementById("log").innerHTML+="<div class='log-entry'>Link detected from clipboard</div>";
-}
-}catch{}
+window.addEventListener("load", async ()=>{
+  try{
+    const t = await navigator.clipboard.readText();
+    if(t.includes("tiktok")){
+      document.getElementById("url").value = t;
+    }
+  }catch{}
 });
 </script>
 </body>
