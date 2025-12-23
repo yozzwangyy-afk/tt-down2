@@ -11,7 +11,7 @@
 </div>
 
 ## 📸 Preview
-![Preview](https://placehold.co/800x400/121212/FFF?text=Nexus+TikTok+Downloader+Preview)
+![Preview](https://tt-down2.vercel.app/)
 
 ## 🎯 Fitur Utama
 - ✅ **Download Video HD** - Tanpa watermark TikTok
