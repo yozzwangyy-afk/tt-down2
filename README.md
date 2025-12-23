@@ -1,50 +1,38 @@
-# 🚀 TikTok Downloader
+# TikTok Downloader
 
-<div align="center">
-  
-![Version](https://img.shields.io/badge/version-3.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Platform](https://img.shields.io/badge/platform-Web-lightgrey)
+TikTok Downloader profesional dengan antarmuka enterprise grade. Unduh video TikTok tanpa watermark dalam kualitas HD.
 
-✨ **TikTok Downloader Profesional dengan UI Enterprise Grade** ✨
+## 🚀 Fitur
+- 📥 Download video TikTok tanpa watermark
+- 🎵 Ekstrak audio MP3
+- 🎨 UI Modern dengan glassmorphism
+- 📱 Responsive design
+- ⚡ Real-time server activity
+- 🔒 Aman dan gratis
 
-</div>
+## 🌐 Deployment
 
-## 📸 Preview
-![Preview](https://tt-down2.vercel.app/)
+### GitHub Pages
+1. Upload semua file ke repository GitHub
+2. Buka Settings → Pages
+3. Pilih branch `main` dan folder `/root`
+4. Simpan, tunggu beberapa menit
+5. Akses di: `https://username.github.io/repository-name`
 
-## 🎯 Fitur Utama
-- ✅ **Download Video HD** - Tanpa watermark TikTok
-- ✅ **Ekstrak Audio MP3** - Kualitas tinggi
-- ✅ **UI Modern** - Glassmorphism & Dark Mode
-- ✅ **Responsive** - Mobile & Desktop friendly
-- ✅ **Real-time Stats** - Live activity log
-- ✅ **Multi Platform** - Bisa diakses di mana saja
+### Vercel
+1. Install Vercel CLI: `npm i -g vercel`
+2. Login: `vercel login`
+3. Deploy: `vercel --prod`
+4. Atau drag & drop folder ke [vercel.com](https://vercel.com)
 
-## 🚀 Cara Deploy
+## 🛠 Teknologi
+- HTML5, CSS3, JavaScript
+- Font Awesome Icons
+- Google Fonts (Inter, Space Grotesk)
+- TikTok API (TikWM)
 
-### **Option 1: GitHub Pages (GRATIS)**
-1. **Buat repository** baru di GitHub
-2. **Upload semua file** ke repository
-3. Buka **Settings** → **Pages**
-4. Pilih **Source**: `Deploy from a branch`
-5. Pilih **Branch**: `main`, folder: `/ (root)`
-6. Klik **Save** dan tunggu 1-2 menit
-7. Akses di: `https://[username].github.io/[repo-name]`
+## ⚠️ Disclaimer
+Tool ini hanya untuk keperluan edukasi. Pastikan kamu memiliki izin untuk mendownload konten yang diunduh.
 
-### **Option 2: Vercel (GRATIS & CEPAT)**
-1. **Cara Drag & Drop:**
-   - Buka [vercel.com](https://vercel.com)
-   - Drag folder ke halaman Vercel
-   - Klik Deploy, selesai!
-
-2. **Cara CLI:**
-   ```bash
-   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Login
-   vercel login
-   
-   # Deploy
-   vercel --prod
+## 📝 Lisensi
+MIT License
