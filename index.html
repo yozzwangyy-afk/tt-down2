@@ -31,12 +31,16 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--bg-deep);
             color: var(--text-main);
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
-            overflow-x: hidden;
             position: relative;
             background-image: 
                 radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
@@ -105,27 +109,31 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* --- Main Layout --- */
+        /* --- Main Container (FIXED) --- */
         .app-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 20px;
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 30px;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+            gap: 25px;
             min-height: 100vh;
-            align-items: center;
+            align-items: start;
+            box-sizing: border-box;
         }
 
-        /* --- Left Side: Main Content --- */
+        /* --- Left Side: Main Content (FIXED) --- */
         .main-section {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .header-section {
             position: relative;
+            width: 100%;
         }
 
         .badge {
@@ -139,7 +147,7 @@
             font-size: 0.8rem;
             color: #ff9ad5;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             backdrop-filter: blur(10px);
             animation: pulseGlow 2s infinite;
         }
@@ -151,67 +159,72 @@
 
         .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             line-height: 1.1;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+            word-wrap: break-word;
+            word-break: break-word;
         }
 
         .hero-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 100px;
-            height: 4px;
+            width: 80px;
+            height: 3px;
             background: var(--gradient-primary);
             border-radius: 2px;
         }
 
         .hero-subtitle {
             color: var(--text-dim);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-top: 20px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.5;
+            margin-top: 15px;
+            max-width: 100%;
+            word-wrap: break-word;
         }
 
-        /* --- Input Section --- */
+        /* --- Input Section (FIXED) --- */
         .input-section {
             position: relative;
             margin-top: 10px;
+            width: 100%;
         }
 
         .input-wrapper {
             position: relative;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            width: 100%;
         }
 
         .input-icon {
             position: absolute;
-            left: 25px;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--accent-primary);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             z-index: 2;
         }
 
         .url-input {
-            flex: 1;
+            width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 182, 193, 0.1);
-            padding: 22px 25px 22px 60px;
-            border-radius: 18px;
+            padding: 18px 20px 18px 55px;
+            border-radius: 16px;
             color: white;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
         }
 
         .url-input:focus {
@@ -225,25 +238,29 @@
 
         .url-input::placeholder {
             color: rgba(255, 255, 255, 0.4);
+            font-size: 0.95rem;
         }
 
-        /* --- Buttons --- */
+        /* --- Buttons (FIXED) --- */
         .btn {
-            padding: 20px 40px;
+            width: 100%;
+            padding: 18px 25px;
             border: none;
-            border-radius: 18px;
+            border-radius: 16px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
+            margin-top: 15px;
+            box-sizing: border-box;
         }
 
         .btn-primary {
@@ -255,47 +272,67 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: 
                 0 20px 40px rgba(255, 107, 157, 0.4),
                 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
-        .btn-primary:active {
-            transform: translateY(-1px);
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        /* --- Right Side: Stats & Features (FIXED) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
+            box-sizing: border-box;
         }
 
-        .btn-primary:hover::after {
-            left: 100%;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 182, 193, 0.2);
-            color: var(--text-main);
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 182, 193, 0.1);
+            transition: transform 0.3s;
+            box-sizing: border-box;
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-primary);
-            transform: translateY(-2px);
+        .stat-value {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         /* --- Result Panel --- */
         .result-panel {
-            margin-top: 30px;
+            margin-top: 20px;
             display: none;
+            width: 100%;
             animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -312,36 +349,35 @@
 
         .video-card {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 20px;
             border: 1px solid rgba(255, 182, 193, 0.1);
             position: relative;
             overflow: hidden;
-        }
-
-        .video-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--gradient-primary);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .video-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .video-content {
+                grid-template-columns: 1fr 2fr;
+            }
         }
 
         .thumbnail-container {
             position: relative;
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
             aspect-ratio: 9/16;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
         }
 
         .thumbnail-container img {
@@ -351,112 +387,70 @@
             transition: transform 0.5s;
         }
 
-        .thumbnail-container:hover img {
-            transform: scale(1.05);
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 107, 157, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .thumbnail-container:hover .play-overlay {
-            opacity: 1;
-        }
-
-        .play-icon {
-            background: rgba(255, 255, 255, 0.9);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 1.5rem;
-            transform: scale(0.8);
-            transition: transform 0.3s;
-        }
-
-        .thumbnail-container:hover .play-icon {
-            transform: scale(1);
-        }
-
         .video-info {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            width: 100%;
         }
 
         .video-title {
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.3;
             background: linear-gradient(to right, #fff, #ff9ad5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
         }
 
         .author-info {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gradient-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+            gap: 10px;
         }
 
         .author-name {
             color: var(--accent-primary);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .action-buttons {
-            display: flex;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
             margin-top: 10px;
+            width: 100%;
+        }
+
+        @media (min-width: 480px) {
+            .action-buttons {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         .action-btn {
-            flex: 1;
-            padding: 18px 25px;
-            border-radius: 14px;
+            padding: 15px 20px;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             position: relative;
             overflow: hidden;
+            border: none;
+            box-sizing: border-box;
         }
 
         .action-btn-primary {
             background: var(--gradient-primary);
             color: white;
-            border: none;
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
         }
 
         .action-btn-secondary {
@@ -465,112 +459,43 @@
             color: var(--text-main);
         }
 
-        .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
-        }
-
-        /* --- Right Side: Stats & Features --- */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid rgba(255, 182, 193, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         /* --- Activity Log --- */
         .activity-log {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 18px;
+            padding: 20px;
             border: 1px solid rgba(255, 182, 193, 0.1);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .log-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 182, 193, 0.1);
         }
 
         .log-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--accent-primary);
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .live-indicator {
-            display: flex;
-            align-items: center;
             gap: 8px;
-            color: var(--success);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .live-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--success);
-            animation: pulse 2s infinite;
         }
 
         .log-content {
-            height: 250px;
+            height: 200px;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 8px;
+            width: 100%;
         }
 
         .log-content::-webkit-scrollbar {
             width: 4px;
-        }
-
-        .log-content::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 2px;
         }
 
         .log-content::-webkit-scrollbar-thumb {
@@ -580,62 +505,45 @@
 
         .log-entry {
             display: flex;
-            gap: 15px;
-            padding: 12px;
-            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            margin-bottom: 8px;
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
+            border-radius: 10px;
             animation: slideIn 0.3s ease;
             border-left: 3px solid var(--accent-primary);
-        }
-
-        .log-time {
-            color: var(--accent-secondary);
             font-size: 0.85rem;
-            font-family: 'Space Grotesk', monospace;
-            min-width: 70px;
-        }
-
-        .log-message {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .log-success {
-            color: var(--success);
         }
 
         /* --- Platform Icons --- */
         .platforms {
             display: flex;
             justify-content: space-around;
-            padding: 25px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
+            border-radius: 18px;
             border: 1px solid rgba(255, 182, 193, 0.1);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .platform-icon {
             color: var(--accent-primary);
-            font-size: 2rem;
+            font-size: 1.5rem;
             transition: all 0.3s;
-        }
-
-        .platform-icon:hover {
-            color: var(--accent-secondary);
-            transform: translateY(-5px) scale(1.2);
         }
 
         /* --- Loading & Error States --- */
         .loader-container {
-            margin-top: 20px;
+            margin-top: 15px;
             display: none;
+            width: 100%;
         }
 
         .loader {
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             overflow: hidden;
@@ -659,12 +567,15 @@
         .error-message {
             color: #ff6b6b;
             background: rgba(255, 107, 107, 0.1);
-            padding: 15px 20px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 15px;
             display: none;
             border-left: 4px solid #ff6b6b;
             animation: shake 0.5s;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.9rem;
         }
 
         @keyframes shake {
@@ -673,25 +584,48 @@
             75% { transform: translateX(5px); }
         }
 
-        /* --- Responsive Design --- */
+        /* --- Responsive Design (FIXED) --- */
         @media (max-width: 1200px) {
             .app-container {
                 grid-template-columns: 1fr;
-                padding: 20px;
+                gap: 20px;
+                padding: 15px;
             }
             
-            .hero-title {
-                font-size: 2.8rem;
+            .main-section, .sidebar {
+                max-width: 100%;
             }
         }
 
         @media (max-width: 768px) {
-            .video-content {
-                grid-template-columns: 1fr;
+            .app-container {
+                padding: 12px;
+                gap: 15px;
             }
             
-            .action-buttons {
-                flex-direction: column;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .stat-card {
+                padding: 15px 10px;
+                min-height: 100px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 10px;
             }
             
             .stats-grid {
@@ -699,66 +633,47 @@
             }
             
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
-            .input-wrapper {
-                flex-direction: column;
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .url-input {
+                padding: 15px 15px 15px 45px;
+                font-size: 0.9rem;
             }
             
             .btn {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .app-container {
-                padding: 15px;
+                padding: 16px 20px;
+                font-size: 0.9rem;
             }
             
-            .video-card {
-                padding: 20px;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem;
+            .action-buttons {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* --- Custom Cursor Effect --- */
-        .cursor-effect {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 107, 157, 0.3);
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: screen;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s, width 0.3s, height 0.3s;
+        /* --- Utility Classes --- */
+        .text-center {
+            text-align: center;
         }
 
-        /* --- Decorative Elements --- */
-        .decoration {
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
+        .w-100 {
+            width: 100%;
         }
 
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-primary);
-            animation: sparkle 3s infinite;
+        .mb-10 {
+            margin-bottom: 10px;
         }
 
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
+        .mt-15 {
+            margin-top: 15px;
+        }
+
+        .p-relative {
+            position: relative;
         }
     </style>
 </head>
@@ -769,12 +684,6 @@
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
     </div>
-
-    <!-- Decorative Sparkles -->
-    <div class="decoration" id="sparkles"></div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor-effect" id="cursor"></div>
 
     <!-- Main App Container -->
     <div class="app-container">
@@ -787,10 +696,10 @@
                 </div>
                 <h1 class="hero-title">
                     Download TikTok<br>
-                    <span style="opacity: 0.9;">in Pink Style</span>
+                    <span style="opacity: 0.9; font-size: 0.9em;">in Pink Style</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Ekstrak video TikTok tanpa watermark dengan kualitas HD dan audio MP3 kualitas terbaik.
+                    Ekstrak video TikTok tanpa watermark dengan kualitas HD dan audio MP3 kualitas terbaik. 
                     Didukung oleh teknologi AI generasi terbaru untuk pengalaman download yang cepat dan aman.
                 </p>
             </div>
@@ -802,11 +711,11 @@
                     <input type="text" 
                            id="urlInput" 
                            class="url-input glass" 
-                           placeholder="https://www.tiktok.com/@user/video/1234567890..." 
+                           placeholder="https://www.tiktok.com/@user/video/1234567890" 
                            autocomplete="off">
                 </div>
                 
-                <button id="btnProcess" class="btn btn-primary" style="margin-top: 20px; width: 100%;">
+                <button id="btnProcess" class="btn btn-primary">
                     <i class="fas fa-magic"></i> Extract Video
                 </button>
 
@@ -830,20 +739,12 @@
                     <div class="video-content">
                         <div class="thumbnail-container">
                             <img id="thumbImg" src="" alt="Video Thumbnail">
-                            <div class="play-overlay">
-                                <div class="play-icon">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
                         </div>
                         
                         <div class="video-info">
                             <h2 class="video-title" id="titleTxt">Video Title Will Appear Here</h2>
                             
                             <div class="author-info">
-                                <div class="author-avatar">
-                                    <i class="fas fa-user"></i>
-                                </div>
                                 <span class="author-name" id="authorTxt">@tiktokuser</span>
                             </div>
                             
@@ -891,7 +792,7 @@
                     </div>
                     <div class="live-indicator">
                         <div class="live-dot"></div>
-                        <span>LIVE</span>
+                        <span style="font-size: 0.8rem;">LIVE</span>
                     </div>
                 </div>
                 
@@ -929,67 +830,37 @@
             visitorCount: document.getElementById('visitorCount')
         };
 
-        // Custom cursor effect
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.pageX + 'px';
-            cursor.style.top = e.pageY + 'px';
-        });
-
-        document.addEventListener('mousedown', () => {
-            cursor.style.width = '15px';
-            cursor.style.height = '15px';
-        });
-
-        document.addEventListener('mouseup', () => {
-            cursor.style.width = '20px';
-            cursor.style.height = '20px';
-        });
-
-        // Add sparkle effects
-        function createSparkles() {
-            const sparklesContainer = document.getElementById('sparkles');
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = Math.random() * 100 + 'vw';
-                sparkle.style.top = Math.random() * 100 + 'vh';
-                sparkle.style.animationDelay = Math.random() * 3 + 's';
-                sparklesContainer.appendChild(sparkle);
-            }
-        }
-
         // Add log entry
         function addLog(message, type = 'info') {
             const now = new Date();
             const timeString = now.toLocaleTimeString('en-US', { 
                 hour12: false, 
                 hour: "2-digit", 
-                minute: "2-digit",
-                second: "2-digit"
+                minute: "2-digit"
             });
 
             const logEntry = document.createElement('div');
             logEntry.className = `log-entry ${type}`;
             logEntry.innerHTML = `
                 <span class="log-time">${timeString}</span>
-                <span class="log-message ${type === 'success' ? 'log-success' : ''}">${message}</span>
+                <span class="log-message">${message}</span>
             `;
 
             elements.logs.insertBefore(logEntry, elements.logs.firstChild);
             
-            // Limit to 8 entries
-            if (elements.logs.children.length > 8) {
+            // Limit to 6 entries
+            if (elements.logs.children.length > 6) {
                 elements.logs.removeChild(elements.logs.lastChild);
             }
         }
 
         // Random visitor counter
         function updateVisitorCount() {
-            let current = parseInt(elements.visitorCount.textContent.replace(/[^0-9]/g, ''));
-            const change = Math.floor(Math.random() * 50) - 20;
-            const newCount = Math.max(2000, current + change);
-            elements.visitorCount.textContent = (newCount / 1000).toFixed(1) + 'K';
+            let current = parseFloat(elements.visitorCount.textContent);
+            if (isNaN(current)) current = 2.4;
+            const change = (Math.random() * 0.3) - 0.15;
+            const newCount = Math.max(2.0, current + change);
+            elements.visitorCount.textContent = newCount.toFixed(1) + 'K';
         }
 
         // Process TikTok URL
@@ -1024,7 +895,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                showError('Failed to process video. Please try again or use a different URL.');
+                showError('Failed to process video. Please try again.');
                 renderFallback(url);
             } finally {
                 showLoading(false);
@@ -1033,7 +904,7 @@
 
         // Render video result
         function renderResult(videoData) {
-            elements.thumb.src = videoData.cover;
+            elements.thumb.src = videoData.cover || 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
             elements.title.textContent = videoData.title || 'TikTok Video';
             elements.author.textContent = videoData.author?.nickname || '@user';
             
@@ -1052,14 +923,14 @@
         // Fallback mode
         function renderFallback(originalUrl) {
             elements.thumb.src = 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
-            elements.title.textContent = 'Direct Link Mode (API Busy)';
+            elements.title.textContent = 'Direct Link Mode';
             elements.author.textContent = '@user';
             
             elements.btnNoWm.onclick = () => window.open(originalUrl, '_blank');
             elements.btnNoWm.innerHTML = '<i class="fas fa-external-link-alt"></i> Open Original';
             
             elements.result.style.display = 'block';
-            addLog('Using fallback mode due to high traffic', 'info');
+            addLog('Using fallback mode', 'info');
         }
 
         // Handle download
@@ -1088,11 +959,11 @@
                 document.body.removeChild(link);
                 URL.revokeObjectURL(blobUrl);
                 
-                addLog(`Downloaded successfully: ${filename}`, 'success');
+                addLog(`Downloaded: ${filename}`, 'success');
             } catch (error) {
                 // Fallback to new tab
                 window.open(url, '_blank');
-                addLog('Used fallback download method', 'info');
+                addLog('Used fallback download', 'info');
             } finally {
                 button.innerHTML = originalHTML;
                 button.disabled = false;
@@ -1129,9 +1000,8 @@
         });
 
         // Initialize
-        createSparkles();
         addLog('System initialized successfully', 'success');
-        addLog('Ready to download TikTok videos', 'info');
+        addLog('Ready to download videos', 'info');
         
         // Auto-update visitor count
         setInterval(updateVisitorCount, 5000);
@@ -1143,11 +1013,14 @@
                 'Audio conversion completed',
                 'New user joined',
                 'Video analysis successful',
-                'System maintenance completed'
+                'System optimized'
             ];
             const randomActivity = activities[Math.floor(Math.random() * activities.length)];
             addLog(randomActivity, 'info');
         }, 8000);
+
+        // Auto focus on input
+        elements.input.focus();
     </script>
 </body>
 </html>
