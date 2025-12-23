@@ -6,24 +6,21 @@
     <title>TikTok Downloader • Modern & Fast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬇️</text></svg>">
     <style>
         :root {
             --bg-deep: #0a0a0f;
             --bg-surface: #11111d;
             --glass-panel: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 182, 193, 0.1);
-            --accent-primary: #ff6b9d;
-            --accent-secondary: #ff9ad5;
-            --accent-glow: rgba(255, 107, 157, 0.3);
-            --neon-pink: #ff00ff;
-            --neon-purple: #c724fe;
-            --success: #ff7eb3;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --success: #10b981;
             --text-main: #ffffff;
-            --text-dim: #e2c2cc;
-            --gradient-primary: linear-gradient(135deg, #ff6b9d, #ff9ad5, #ffc2e2);
-            --gradient-secondary: linear-gradient(135deg, #ff9ad5, #c724fe);
-            --ad-color: #2a2a3a;
+            --text-dim: #94a3b8;
+            --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --ad-color: #1e293b;
         }
 
         * { 
@@ -44,12 +41,11 @@
             min-height: 100vh;
             position: relative;
             background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(199, 36, 254, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 154, 213, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
         }
 
-        /* --- Animated Background Effects --- */
+        /* --- Animated Background --- */
         .floating-shapes {
             position: fixed;
             width: 100%;
@@ -62,475 +58,410 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(60px);
-            opacity: 0.1;
+            opacity: 0.08;
             animation: float 15s infinite ease-in-out;
         }
 
         .shape-1 {
-            width: 400px;
-            height: 400px;
+            width: 300px;
+            height: 300px;
             background: var(--accent-primary);
-            top: -100px;
-            left: -100px;
+            top: -50px;
+            left: -50px;
             animation-delay: 0s;
         }
 
         .shape-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--neon-purple);
-            bottom: -50px;
-            right: -50px;
-            animation-delay: -5s;
-        }
-
-        .shape-3 {
             width: 200px;
             height: 200px;
             background: var(--accent-secondary);
-            top: 50%;
-            left: 70%;
-            animation-delay: -10s;
+            bottom: -30px;
+            right: -30px;
+            animation-delay: -5s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, 50px) rotate(120deg); }
-            66% { transform: translate(-20px, 30px) rotate(240deg); }
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(20px, 30px); }
+            66% { transform: translate(-15px, 20px); }
         }
 
-        /* --- Glassmorphism Effect --- */
+        /* --- Glassmorphism --- */
         .glass {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         /* --- Main Container --- */
         .app-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             display: grid;
-            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) minmax(0, 350px);
             gap: 25px;
             min-height: 100vh;
             align-items: start;
-            box-sizing: border-box;
         }
 
-        /* --- Left Side: Main Content --- */
+        /* --- Left Column --- */
         .main-section {
             display: flex;
             flex-direction: column;
             gap: 25px;
-            width: 100%;
-            box-sizing: border-box;
         }
 
         .header-section {
-            position: relative;
-            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 107, 157, 0.15);
-            border: 1px solid rgba(255, 107, 157, 0.3);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: #ff9ad5;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #818cf8;
             font-weight: 600;
             margin-bottom: 15px;
-            backdrop-filter: blur(10px);
-            animation: pulseGlow 2s infinite;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 107, 157, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(255, 107, 157, 0.5); }
         }
 
         .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             line-height: 1.1;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: var(--gradient-primary);
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #a5b4fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            word-wrap: break-word;
-            word-break: break-word;
-        }
-
-        .hero-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
+            margin-bottom: 10px;
         }
 
         .hero-subtitle {
             color: var(--text-dim);
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            line-height: 1.5;
-            margin-top: 15px;
-            max-width: 100%;
-            word-wrap: break-word;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* --- Iklan Banner Top --- */
-        .ad-banner-top {
-            width: 100%;
-            margin: 10px 0 20px 0;
-            text-align: center;
-        }
-
+        /* --- Iklan YouTube Style --- */
         .ad-container {
-            background: linear-gradient(135deg, var(--ad-color), #1a1a2e);
-            border-radius: 16px;
-            padding: 15px;
-            border: 1px solid rgba(255, 182, 193, 0.2);
-            position: relative;
+            width: 100%;
+            margin: 15px 0;
+            border-radius: 12px;
             overflow: hidden;
-            min-height: 120px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .ad-container:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Banner Ad (YouTube Style) */
+        .banner-ad {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ad-badge {
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .ad-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .ad-label {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(255, 107, 157, 0.2);
-            color: var(--accent-primary);
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
         .ad-content {
-            text-align: center;
-            padding: 20px;
-            width: 100%;
+            flex: 1;
         }
 
         .ad-title {
-            color: var(--accent-primary);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
         }
 
         .ad-description {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
         }
 
-        .ad-button {
+        .ad-link {
+            color: #60a5fa;
+            font-size: 0.8rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .ad-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Video Ad */
+        .video-ad {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .ad-video-thumb {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #1e293b, #475569);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ad-video-thumb::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+        }
+
+        .play-button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .ad-video-info {
+            padding: 15px;
+        }
+
+        .ad-channel {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .channel-logo {
+            width: 30px;
+            height: 30px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .channel-name {
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .ad-cta {
+            width: 100%;
+            padding: 10px;
             background: var(--gradient-primary);
             color: white;
             border: none;
-            padding: 10px 25px;
-            border-radius: 25px;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            text-decoration: none;
+            transition: all 0.3s;
         }
 
-        .ad-button:hover {
+        .ad-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
 
-        /* --- Iklan Sidebar --- */
-        .ad-sidebar {
-            margin: 15px 0;
-            width: 100%;
-        }
-
-        .ad-sidebar .ad-container {
-            min-height: 250px;
-            flex-direction: column;
-        }
-
-        /* --- Iklan Inline --- */
-        .ad-inline {
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        .ad-inline .ad-container {
-            min-height: 90px;
-            padding: 12px;
+        /* Sidebar Ad */
+        .sidebar-ad {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* --- Input Section --- */
         .input-section {
-            position: relative;
-            margin-top: 10px;
-            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .input-wrapper {
             position: relative;
-            width: 100%;
+            margin-bottom: 20px;
         }
 
         .input-icon {
             position: absolute;
-            left: 20px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--accent-primary);
-            font-size: 1.2rem;
-            z-index: 2;
+            font-size: 1.1rem;
         }
 
         .url-input {
             width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 182, 193, 0.1);
-            padding: 18px 20px 18px 55px;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 16px 16px 45px;
+            border-radius: 12px;
             color: white;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-size: 1rem;
             font-family: 'Poppins', sans-serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-sizing: border-box;
+            transition: all 0.3s;
         }
 
         .url-input:focus {
             outline: none;
             border-color: var(--accent-primary);
-            box-shadow: 
-                0 0 0 4px rgba(255, 107, 157, 0.1),
-                0 10px 30px rgba(255, 107, 157, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .url-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.95rem;
-        }
-
-        /* --- Buttons --- */
-        .btn {
-            width: 100%;
-            padding: 18px 25px;
-            border: none;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 15px;
-            box-sizing: border-box;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
         }
 
         .btn-primary {
+            width: 100%;
+            padding: 16px;
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 
-                0 10px 30px rgba(255, 107, 157, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 
-                0 20px 40px rgba(255, 107, 157, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
 
-        /* --- Right Side: Stats & Features --- */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            width: 100%;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 18px;
-            padding: 20px 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 182, 193, 0.1);
-            transition: transform 0.3s;
-            box-sizing: border-box;
-            min-height: 110px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .stat-value {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 800;
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-            line-height: 1;
-        }
-
-        .stat-label {
-            color: var(--text-dim);
-            font-size: clamp(0.7rem, 1.5vw, 0.85rem);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-
-        /* --- Result Panel --- */
+        /* --- Results --- */
         .result-panel {
             margin-top: 20px;
             display: none;
-            width: 100%;
-            animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.5s;
         }
 
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .video-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
             padding: 20px;
-            border: 1px solid rgba(255, 182, 193, 0.1);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .video-content {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 120px 1fr;
             gap: 20px;
             align-items: center;
         }
 
-        @media (min-width: 768px) {
-            .video-content {
-                grid-template-columns: 1fr 2fr;
-            }
-        }
-
         .thumbnail-container {
             position: relative;
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
             aspect-ratio: 9/16;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            width: 100%;
         }
 
         .thumbnail-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
         }
 
         .video-info {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            width: 100%;
         }
 
         .video-title {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            font-weight: 700;
-            line-height: 1.3;
-            background: linear-gradient(to right, #fff, #ff9ad5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            word-wrap: break-word;
-        }
-
-        .author-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .author-name {
-            color: var(--accent-primary);
+            font-size: 1.2rem;
             font-weight: 600;
-            font-size: 0.95rem;
+            line-height: 1.3;
+            color: white;
         }
 
         .action-buttons {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        @media (min-width: 480px) {
-            .action-buttons {
-                grid-template-columns: 1fr 1fr;
-            }
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
         .action-btn {
-            padding: 15px 20px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 0.9rem;
             cursor: pointer;
@@ -539,32 +470,65 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            position: relative;
-            overflow: hidden;
             border: none;
-            box-sizing: border-box;
         }
 
         .action-btn-primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
         }
 
         .action-btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* --- Activity Log --- */
-        .activity-log {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 18px;
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- Right Sidebar --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.3);
             padding: 20px;
-            border: 1px solid rgba(255, 182, 193, 0.1);
-            width: 100%;
-            box-sizing: border-box;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .activity-log {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .log-header {
@@ -572,24 +536,19 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 182, 193, 0.1);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .log-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: var(--accent-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: white;
         }
 
         .log-content {
             height: 200px;
             overflow-y: auto;
-            padding-right: 8px;
-            width: 100%;
         }
 
         .log-content::-webkit-scrollbar {
@@ -603,40 +562,29 @@
 
         .log-entry {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
             padding: 10px;
             margin-bottom: 8px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-            animation: slideIn 0.3s ease;
-            border-left: 3px solid var(--accent-primary);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
             font-size: 0.85rem;
+            border-left: 3px solid var(--accent-primary);
         }
 
-        /* --- Platform Icons --- */
-        .platforms {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 18px;
-            border: 1px solid rgba(255, 182, 193, 0.1);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .platform-icon {
+        .log-time {
             color: var(--accent-primary);
-            font-size: 1.5rem;
-            transition: all 0.3s;
+            font-family: 'Space Grotesk', monospace;
+            min-width: 50px;
         }
 
-        /* --- Loading & Error States --- */
+        .log-message {
+            color: var(--text-dim);
+        }
+
+        /* --- Loading & Error --- */
         .loader-container {
             margin-top: 15px;
             display: none;
-            width: 100%;
         }
 
         .loader {
@@ -645,284 +593,158 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             overflow: hidden;
-            position: relative;
         }
 
         .loader-bar {
-            position: absolute;
             height: 100%;
             width: 40%;
             background: var(--gradient-primary);
             animation: loading 1.5s infinite ease-in-out;
-            border-radius: 2px;
         }
 
         @keyframes loading {
-            0% { left: -40%; }
-            100% { left: 100%; }
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
         }
 
         .error-message {
-            color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.1);
-            padding: 12px 16px;
-            border-radius: 12px;
+            color: #f87171;
+            background: rgba(248, 113, 113, 0.1);
+            padding: 12px;
+            border-radius: 8px;
             margin-top: 15px;
             display: none;
-            border-left: 4px solid #ff6b6b;
-            animation: shake 0.5s;
-            width: 100%;
-            box-sizing: border-box;
-            font-size: 0.9rem;
+            border-left: 4px solid #f87171;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        /* --- Footer Ads --- */
-        .footer-ads {
-            margin-top: 30px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* --- Close Ad Button --- */
-        .close-ad {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-dim);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .close-ad:hover {
-            background: rgba(255, 107, 157, 0.2);
-            color: var(--accent-primary);
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 1200px) {
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
             .app-container {
                 grid-template-columns: 1fr;
-                gap: 20px;
                 padding: 15px;
             }
             
-            .main-section, .sidebar {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .app-container {
-                padding: 12px;
-                gap: 15px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .stat-card {
-                padding: 15px 10px;
-                min-height: 100px;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                line-height: 1.4;
-            }
-            
-            .ad-sidebar .ad-container {
-                min-height: 180px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .app-container {
-                padding: 10px;
-            }
-            
-            .stats-grid {
+            .video-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            .url-input {
-                padding: 15px 15px 15px 45px;
-                font-size: 0.9rem;
-            }
-            
-            .btn {
-                padding: 16px 20px;
-                font-size: 0.9rem;
             }
             
             .action-buttons {
                 grid-template-columns: 1fr;
             }
-            
-            .ad-container {
-                min-height: 100px;
-                padding: 12px;
+        }
+
+        @media (max-width: 576px) {
+            .app-container {
+                padding: 10px;
             }
             
-            .ad-title {
-                font-size: 1rem;
+            .banner-ad {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .ad-description {
-                font-size: 0.8rem;
+            .hero-title {
+                font-size: 1.8rem;
             }
-        }
-
-        /* --- Utility Classes --- */
-        .text-center {
-            text-align: center;
-        }
-
-        .w-100 {
-            width: 100%;
-        }
-
-        .mb-10 {
-            margin-bottom: 10px;
-        }
-
-        .mt-15 {
-            margin-top: 15px;
-        }
-
-        .p-relative {
-            position: relative;
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
+    <!-- Background Shapes -->
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
     </div>
 
-    <!-- Main App Container -->
+    <!-- Main App -->
     <div class="app-container">
         
-        <!-- Left Column: Main Content -->
+        <!-- Left Column -->
         <main class="main-section">
-            <div class="header-section">
-                <div class="badge glass">
-                    <i class="fas fa-sparkles"></i> PREMIUM EDITION • v3.5
+            <!-- Header -->
+            <div class="header-section glass">
+                <div class="badge">
+                    <i class="fas fa-bolt"></i> FAST & FREE
                 </div>
-                <h1 class="hero-title">
-                    Download TikTok<br>
-                    <span style="opacity: 0.9; font-size: 0.9em;">in Pink Style</span>
-                </h1>
+                <h1 class="hero-title">TikTok Downloader</h1>
                 <p class="hero-subtitle">
-                    Ekstrak video TikTok tanpa watermark dengan kualitas HD dan audio MP3 kualitas terbaik. 
-                    Didukung oleh teknologi AI generasi terbaru untuk pengalaman download yang cepat dan aman.
+                    Download video TikTok tanpa watermark dalam kualitas HD. 
+                    Cepat, gratis, dan mudah digunakan.
                 </p>
             </div>
 
-            <!-- Iklan Banner Top -->
-            <div class="ad-banner-top" id="adTop">
-                <div class="ad-container glass">
-                    <button class="close-ad" onclick="closeAd('adTop')">×</button>
-                    <span class="ad-label">Sponsor</span>
-                    <div class="ad-content">
-                        <h3 class="ad-title">⚡ Boost Your Downloads!</h3>
-                        <p class="ad-description">Gunakan versi PRO untuk unlimited downloads & kecepatan maksimal</p>
-                        <a href="#" class="ad-button" onclick="trackAdClick('top')">
-                            <i class="fas fa-crown"></i> Upgrade Now
-                        </a>
-                    </div>
+            <!-- Iklan Banner (YouTube Style) -->
+            <div class="ad-container banner-ad" id="adBanner">
+                <span class="ad-badge">AD</span>
+                <div class="ad-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="ad-content">
+                    <div class="ad-title">Upgrade ke Versi PRO</div>
+                    <div class="ad-description">Unlimited downloads, no watermark, faster speed</div>
+                    <a href="#" class="ad-link" onclick="trackAdClick('banner')">Learn more →</a>
                 </div>
             </div>
 
             <!-- Input Section -->
-            <div class="input-section">
+            <div class="input-section glass">
                 <div class="input-wrapper">
                     <i class="fas fa-link input-icon"></i>
                     <input type="text" 
                            id="urlInput" 
-                           class="url-input glass" 
-                           placeholder="https://www.tiktok.com/@user/video/1234567890" 
+                           class="url-input" 
+                           placeholder="Paste TikTok URL here..." 
                            autocomplete="off">
                 </div>
                 
-                <button id="btnProcess" class="btn btn-primary">
-                    <i class="fas fa-magic"></i> Extract Video
+                <button id="btnProcess" class="btn-primary">
+                    <i class="fas fa-download"></i> Download Video
                 </button>
 
-                <!-- Loading Indicator -->
+                <!-- Loading -->
                 <div class="loader-container" id="loader">
                     <div class="loader">
                         <div class="loader-bar"></div>
                     </div>
                 </div>
 
-                <!-- Error Message -->
+                <!-- Error -->
                 <div class="error-message" id="errorMsg">
                     <i class="fas fa-exclamation-circle"></i> 
-                    <span id="errorText">Error message will appear here</span>
+                    <span id="errorText">Error message</span>
                 </div>
             </div>
 
-            <!-- Iklan Inline -->
-            <div class="ad-inline" id="adInline">
-                <div class="ad-container glass">
-                    <button class="close-ad" onclick="closeAd('adInline')">×</button>
-                    <span class="ad-label">Rekomendasi</span>
-                    <div class="ad-content" style="padding: 5px;">
-                        <p class="ad-description" style="margin: 0; font-size: 0.85rem;">
-                            <i class="fas fa-lightbulb" style="color: var(--accent-primary);"></i>
-                            <strong>Tips:</strong> Salin URL langsung dari aplikasi TikTok untuk hasil terbaik
-                        </p>
+            <!-- Iklan Video (YouTube Style) -->
+            <div class="ad-container video-ad" id="adVideo">
+                <div class="ad-video-thumb">
+                    <div class="play-button" onclick="playAdVideo()">
+                        <i class="fas fa-play"></i>
                     </div>
                 </div>
+                <div class="ad-video-info">
+                    <div class="ad-channel">
+                        <div class="channel-logo">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="channel-name">VideoTools Pro</div>
+                    </div>
+                    <div class="ad-title">Advanced Video Editor - Free Trial</div>
+                    <button class="ad-cta" onclick="trackAdClick('video')">
+                        <i class="fas fa-external-link-alt"></i> Try Now
+                    </button>
+                </div>
             </div>
 
-            <!-- Results Panel -->
+            <!-- Results -->
             <div id="resultArea" class="result-panel">
                 <div class="video-card glass">
                     <div class="video-content">
                         <div class="thumbnail-container">
                             <img id="thumbImg" src="" alt="Video Thumbnail">
                         </div>
-                        
                         <div class="video-info">
-                            <h2 class="video-title" id="titleTxt">Video Title Will Appear Here</h2>
-                            
-                            <div class="author-info">
-                                <span class="author-name" id="authorTxt">@tiktokuser</span>
-                            </div>
-                            
+                            <h2 class="video-title" id="titleTxt">Video Title</h2>
                             <div class="action-buttons">
                                 <button class="action-btn action-btn-primary" id="btnDownloadNoWm">
                                     <i class="fas fa-download"></i> Download HD
@@ -937,84 +759,66 @@
             </div>
 
             <!-- Iklan Footer -->
-            <div class="footer-ads" id="adFooter">
-                <div class="ad-container glass">
-                    <button class="close-ad" onclick="closeAd('adFooter')">×</button>
-                    <span class="ad-label">Partner</span>
-                    <div class="ad-content">
-                        <h3 class="ad-title">🎵 Butuh MP3 Converter?</h3>
-                        <p class="ad-description">Coba alat konversi audio kami untuk hasil terbaik</p>
-                        <a href="#" class="ad-button" onclick="trackAdClick('footer')">
-                            <i class="fas fa-tools"></i> Try Tool
-                        </a>
-                    </div>
+            <div class="ad-container banner-ad" id="adFooter">
+                <span class="ad-badge">SPONSOR</span>
+                <div class="ad-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="ad-content">
+                    <div class="ad-title">Secure Your Downloads</div>
+                    <div class="ad-description">VPN protection for safe browsing</div>
+                    <a href="#" class="ad-link" onclick="trackAdClick('footer')">Get Protection →</a>
                 </div>
             </div>
         </main>
 
-        <!-- Right Column: Stats & Features -->
+        <!-- Right Sidebar -->
         <aside class="sidebar">
             <!-- Iklan Sidebar -->
-            <div class="ad-sidebar" id="adSidebar">
-                <div class="ad-container glass">
-                    <button class="close-ad" onclick="closeAd('adSidebar')">×</button>
-                    <span class="ad-label">Premium</span>
-                    <div class="ad-content">
-                        <h3 class="ad-title">🚀 No Limits, No Watermark!</h3>
-                        <p class="ad-description">Dengan versi PRO, kamu bisa download tanpa batas dan tanpa watermark</p>
-                        <div style="margin-top: 15px;">
-                            <a href="#" class="ad-button" onclick="trackAdClick('sidebar')" style="font-size: 0.8rem; padding: 8px 20px;">
-                                <i class="fas fa-rocket"></i> Go Pro
-                            </a>
-                        </div>
-                    </div>
+            <div class="sidebar-ad" id="adSidebar">
+                <div class="ad-title" style="color: white; margin-bottom: 10px;">
+                    <i class="fas fa-star" style="color: gold;"></i> Recommended Tool
                 </div>
+                <div class="ad-description" style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">
+                    Convert videos to MP3 with our premium converter
+                </div>
+                <button class="ad-cta" onclick="trackAdClick('sidebar')" style="font-size: 0.9rem; padding: 8px 12px;">
+                    <i class="fas fa-bolt"></i> Try Converter
+                </button>
             </div>
 
-            <!-- Stats Grid -->
+            <!-- Stats -->
             <div class="stats-grid">
-                <div class="stat-card glass">
-                    <div class="stat-value" id="visitorCount">2.4K</div>
-                    <div class="stat-label">Active Users</div>
+                <div class="stat-card">
+                    <div class="stat-value" id="visitorCount">1.2K</div>
+                    <div class="stat-label">Online Now</div>
                 </div>
-                <div class="stat-card glass">
-                    <div class="stat-value">99.9%</div>
+                <div class="stat-card">
+                    <div class="stat-value">99%</div>
                     <div class="stat-label">Success Rate</div>
                 </div>
-                <div class="stat-card glass">
-                    <div class="stat-value">3.2M</div>
+                <div class="stat-card">
+                    <div class="stat-value">2.5M</div>
                     <div class="stat-label">Downloads</div>
                 </div>
-                <div class="stat-card glass">
-                    <div class="stat-value">24/7</div>
-                    <div class="stat-label">Uptime</div>
+                <div class="stat-card">
+                    <div class="stat-value">HD</div>
+                    <div class="stat-label">Quality</div>
                 </div>
             </div>
 
             <!-- Activity Log -->
             <div class="activity-log glass">
                 <div class="log-header">
-                    <div class="log-title">
-                        <i class="fas fa-stream"></i> Live Activity
-                    </div>
-                    <div class="live-indicator">
-                        <div class="live-dot"></div>
-                        <span style="font-size: 0.8rem;">LIVE</span>
+                    <div class="log-title">Recent Activity</div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
+                        <span style="color: #10b981; font-size: 0.8rem;">LIVE</span>
                     </div>
                 </div>
-                
                 <div class="log-content" id="logContainer">
-                    <!-- Log entries will be inserted here -->
+                    <!-- Logs will be added here -->
                 </div>
-            </div>
-
-            <!-- Platform Icons -->
-            <div class="platforms glass">
-                <i class="fab fa-android platform-icon"></i>
-                <i class="fab fa-apple platform-icon"></i>
-                <i class="fab fa-windows platform-icon"></i>
-                <i class="fas fa-globe platform-icon"></i>
-                <i class="fas fa-bolt platform-icon"></i>
             </div>
         </aside>
     </div>
@@ -1030,64 +834,49 @@
             errorText: document.getElementById('errorText'),
             thumb: document.getElementById('thumbImg'),
             title: document.getElementById('titleTxt'),
-            author: document.getElementById('authorTxt'),
             btnNoWm: document.getElementById('btnDownloadNoWm'),
             btnAudio: document.getElementById('btnDownloadAudio'),
             logs: document.getElementById('logContainer'),
             visitorCount: document.getElementById('visitorCount')
         };
 
-        // Iklan management
-        let adsShown = 0;
-        const maxAdsPerSession = 3;
-
-        function closeAd(adId) {
-            const adElement = document.getElementById(adId);
-            if (adElement) {
-                adElement.style.opacity = '0';
-                adElement.style.transform = 'translateY(-10px)';
-                setTimeout(() => {
-                    adElement.style.display = 'none';
-                }, 300);
-                addLog('Iklan ditutup', 'info');
-            }
-        }
-
-        function trackAdClick(position) {
-            // Simulasi tracking klik iklan
-            const positions = {
-                'top': 'Banner Atas',
-                'sidebar': 'Sidebar',
-                'footer': 'Footer',
-                'inline': 'Inline'
+        // Iklan Functions
+        function trackAdClick(type) {
+            const adTypes = {
+                'banner': 'Top Banner',
+                'video': 'Video Ad',
+                'footer': 'Footer Ad',
+                'sidebar': 'Sidebar Ad'
             };
             
-            addLog(`Iklan diklik: ${positions[position] || position}`, 'success');
+            addLog(`Iklan diklik: ${adTypes[type]}`);
             
-            // Simulasi redirect (dalam implementasi nyata, ini akan mengarahkan ke link iklan)
+            // Simulate ad redirect
             setTimeout(() => {
-                alert('Terima kasih! Iklan berhasil diklik. (Ini hanya simulasi)');
+                alert('Thanks for clicking! This is a demo ad. Real ads would redirect here.');
             }, 100);
             
-            return false; // Mencegah redirect default
+            return false;
         }
 
-        // Rotate iklan secara berkala
+        function playAdVideo() {
+            addLog('Video iklan diputar');
+            alert('🎬 Video iklan akan diputar (simulasi)');
+        }
+
+        // Rotate ads every 30 seconds
         function rotateAds() {
-            const ads = ['adTop', 'adSidebar', 'adInline', 'adFooter'];
-            ads.forEach(adId => {
-                const ad = document.getElementById(adId);
-                if (ad && Math.random() > 0.7) { // 30% chance untuk rotate
-                    ad.style.opacity = '0.5';
-                    setTimeout(() => {
-                        ad.style.opacity = '1';
-                    }, 1000);
+            const ads = document.querySelectorAll('.ad-container, .sidebar-ad');
+            ads.forEach(ad => {
+                if (Math.random() > 0.5) {
+                    ad.style.opacity = '0.9';
+                    setTimeout(() => ad.style.opacity = '1', 500);
                 }
             });
         }
 
         // Add log entry
-        function addLog(message, type = 'info') {
+        function addLog(message) {
             const now = new Date();
             const timeString = now.toLocaleTimeString('en-US', { 
                 hour12: false, 
@@ -1096,7 +885,7 @@
             });
 
             const logEntry = document.createElement('div');
-            logEntry.className = `log-entry ${type}`;
+            logEntry.className = 'log-entry';
             logEntry.innerHTML = `
                 <span class="log-time">${timeString}</span>
                 <span class="log-message">${message}</span>
@@ -1104,19 +893,17 @@
 
             elements.logs.insertBefore(logEntry, elements.logs.firstChild);
             
-            // Limit to 6 entries
-            if (elements.logs.children.length > 6) {
+            if (elements.logs.children.length > 5) {
                 elements.logs.removeChild(elements.logs.lastChild);
             }
         }
 
-        // Random visitor counter
+        // Update visitor count
         function updateVisitorCount() {
-            let current = parseFloat(elements.visitorCount.textContent);
-            if (isNaN(current)) current = 2.4;
-            const change = (Math.random() * 0.3) - 0.15;
-            const newCount = Math.max(2.0, current + change);
-            elements.visitorCount.textContent = newCount.toFixed(1) + 'K';
+            let current = parseInt(elements.visitorCount.textContent);
+            if (isNaN(current)) current = 1200;
+            const change = Math.floor(Math.random() * 40) - 20;
+            elements.visitorCount.textContent = Math.max(1000, current + change);
         }
 
         // Process TikTok URL
@@ -1135,13 +922,7 @@
 
             resetUI();
             showLoading(true);
-            addLog('Processing video URL...', 'info');
-
-            // Tampilkan iklan setelah proses dimulai
-            if (adsShown < maxAdsPerSession) {
-                adsShown++;
-                addLog('Menampilkan iklan terkait...', 'info');
-            }
+            addLog(`Processing: ${url.substring(0, 30)}...`);
 
             try {
                 // Using TikTok API
@@ -1151,7 +932,7 @@
 
                 if (data.code === 0 && data.data) {
                     renderResult(data.data);
-                    addLog('Video analysis complete!', 'success');
+                    addLog('Video processed successfully');
                 } else {
                     throw new Error('Failed to fetch video data');
                 }
@@ -1164,35 +945,27 @@
             }
         }
 
-        // Render video result
+        // Render result
         function renderResult(videoData) {
-            elements.thumb.src = videoData.cover || 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+            elements.thumb.src = videoData.cover || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400"><rect width="300" height="400" fill="%23111"/><text x="150" y="200" font-family="Arial" font-size="20" fill="white" text-anchor="middle">TikTok Video</text></svg>';
             elements.title.textContent = videoData.title || 'TikTok Video';
-            elements.author.textContent = videoData.author?.nickname || '@user';
             
-            // Set download handlers
-            elements.btnNoWm.onclick = () => handleDownload(videoData.play, `tiktok-hd-${Date.now()}.mp4`);
+            elements.btnNoWm.onclick = () => handleDownload(videoData.play, `tiktok-${Date.now()}.mp4`);
             elements.btnAudio.onclick = () => handleDownload(videoData.music, `tiktok-audio-${Date.now()}.mp3`);
             
-            // Show result panel with animation
             elements.result.style.display = 'block';
-            setTimeout(() => {
-                elements.result.style.opacity = '1';
-                elements.result.style.transform = 'translateY(0)';
-            }, 10);
         }
 
         // Fallback mode
-        function renderFallback(originalUrl) {
-            elements.thumb.src = 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
-            elements.title.textContent = 'Direct Link Mode';
-            elements.author.textContent = '@user';
+        function renderFallback(url) {
+            elements.thumb.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400"><rect width="300" height="400" fill="%23222"/><text x="150" y="200" font-family="Arial" font-size="18" fill="white" text-anchor="middle">Direct Link Mode</text></svg>';
+            elements.title.textContent = 'Open Original Link';
             
-            elements.btnNoWm.onclick = () => window.open(originalUrl, '_blank');
-            elements.btnNoWm.innerHTML = '<i class="fas fa-external-link-alt"></i> Open Original';
+            elements.btnNoWm.onclick = () => window.open(url, '_blank');
+            elements.btnNoWm.innerHTML = '<i class="fas fa-external-link-alt"></i> Open Link';
             
             elements.result.style.display = 'block';
-            addLog('Using fallback mode', 'info');
+            addLog('Using fallback mode');
         }
 
         // Handle download
@@ -1200,21 +973,12 @@
             const button = event.currentTarget;
             const originalHTML = button.innerHTML;
             
-            button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Preparing...';
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
             button.disabled = true;
             
-            addLog(`Starting download: ${filename}`, 'info');
-
-            // Tampilkan iklan sebelum download
-            if (adsShown < maxAdsPerSession) {
-                setTimeout(() => {
-                    alert('🎉 Download akan segera dimulai! Dukung kami dengan melihat iklan terlebih dahulu.');
-                }, 500);
-                adsShown++;
-            }
+            addLog(`Downloading: ${filename}`);
 
             try {
-                // Try direct download
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Network error');
                 
@@ -1229,24 +993,23 @@
                 document.body.removeChild(link);
                 URL.revokeObjectURL(blobUrl);
                 
-                addLog(`Downloaded: ${filename}`, 'success');
+                addLog('Download completed');
             } catch (error) {
-                // Fallback to new tab
                 window.open(url, '_blank');
-                addLog('Used fallback download', 'info');
+                addLog('Used fallback download');
             } finally {
                 button.innerHTML = originalHTML;
                 button.disabled = false;
             }
         }
 
-        // UI Helper functions
+        // UI functions
         function showLoading(show) {
             elements.loader.style.display = show ? 'block' : 'none';
             elements.btn.disabled = show;
             elements.btn.innerHTML = show 
-                ? '<i class="fas fa-cog fa-spin"></i> Processing...' 
-                : '<i class="fas fa-magic"></i> Extract Video';
+                ? '<i class="fas fa-spinner fa-spin"></i> Processing...' 
+                : '<i class="fas fa-download"></i> Download Video';
         }
 
         function showError(message) {
@@ -1258,8 +1021,7 @@
         }
 
         function resetUI() {
-            elements.result.style.opacity = '0';
-            elements.result.style.transform = 'translateY(20px)';
+            elements.result.style.display = 'none';
             elements.error.style.display = 'none';
         }
 
@@ -1270,30 +1032,22 @@
         });
 
         // Initialize
-        addLog('System initialized successfully', 'success');
-        addLog('Ready to download videos', 'info');
+        addLog('System ready');
+        addLog('Waiting for input...');
         
-        // Auto-update visitor count
         setInterval(updateVisitorCount, 5000);
+        setInterval(rotateAds, 30000);
         
-        // Auto-add random logs
         setInterval(() => {
             const activities = [
-                'User downloaded HD video',
-                'Audio conversion completed',
-                'New user joined',
-                'Video analysis successful',
+                'User downloaded video',
+                'New user connected',
+                'Video processed',
+                'MP3 converted',
                 'System optimized'
             ];
-            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
-            addLog(randomActivity, 'info');
-        }, 8000);
-
-        // Rotate iklan setiap 10 detik
-        setInterval(rotateAds, 10000);
-
-        // Auto focus on input
-        elements.input.focus();
+            addLog(activities[Math.floor(Math.random() * activities.length)]);
+        }, 10000);
     </script>
 </body>
 </html>
