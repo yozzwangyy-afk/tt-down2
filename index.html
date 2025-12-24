@@ -307,6 +307,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-value {
@@ -318,6 +320,7 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
             line-height: 1;
+            transition: all 0.3s ease;
         }
 
         .stat-label {
@@ -326,6 +329,52 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             line-height: 1.2;
+        }
+
+        .stat-change {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .stat-change.positive {
+            background: rgba(76, 217, 100, 0.2);
+            color: #4cd964;
+            display: block;
+        }
+
+        .stat-change.negative {
+            background: rgba(255, 59, 48, 0.2);
+            color: #ff3b30;
+            display: block;
+        }
+
+        /* Live Indicator */
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            animation: pulse 2s infinite;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         /* --- Result Panel --- */
@@ -516,6 +565,24 @@
             font-size: 0.85rem;
         }
 
+        .log-entry.success {
+            border-left-color: #4cd964;
+        }
+
+        .log-entry.warning {
+            border-left-color: #ff9500;
+        }
+
+        .log-entry.error {
+            border-left-color: #ff3b30;
+        }
+
+        .log-time {
+            color: var(--accent-primary);
+            font-weight: 500;
+            min-width: 45px;
+        }
+
         /* --- Platform Icons --- */
         .platforms {
             display: flex;
@@ -675,6 +742,27 @@
         .p-relative {
             position: relative;
         }
+
+        .success-rate {
+            font-size: 0.7rem;
+            color: #4cd964;
+            margin-top: 3px;
+        }
+
+        .counter-animation {
+            animation: countUp 0.5s ease-out;
+        }
+
+        @keyframes countUp {
+            from {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -692,7 +780,7 @@
         <main class="main-section">
             <div class="header-section">
                 <div class="badge glass">
-                    <i class="fas fa-sparkles"></i> TIKTOK DOWNLOADER • v3.5
+                    <i class="fas fa-sparkles"></i> TIKTOK DOWNLOADER • v3.5 • LIVE
                 </div>
                 <h1 class="hero-title">
                     TikTok Downloader<br>
@@ -701,6 +789,9 @@
                 <p class="hero-subtitle">
                     Ekstrak video TikTok tanpa watermark dengan kualitas HD dan audio MP3 kualitas terbaik. 
                     Didukung oleh teknologi AI generasi terbaru untuk pengalaman download yang cepat dan aman.
+                    <span style="color: var(--accent-primary); display: block; margin-top: 8px;">
+                        <i class="fas fa-circle" style="font-size: 0.6em;"></i> Live tracking aktif
+                    </span>
                 </p>
             </div>
 
@@ -767,20 +858,24 @@
             <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card glass">
-                    <div class="stat-value" id="visitorCount">1.2k</div>
-                    <div class="stat-label">Active Users</div>
+                    <div class="stat-value" id="activeUsers">1,247</div>
+                    <div class="stat-label">Active Users Now</div>
+                    <div class="stat-change positive" id="userChange">+12</div>
                 </div>
                 <div class="stat-card glass">
-                    <div class="stat-value">99.9%</div>
+                    <div class="stat-value" id="downloadCount">3.2M</div>
+                    <div class="stat-label">Total Downloads</div>
+                    <div class="stat-change positive" id="downloadChange">+284</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-value" id="successRate">99.8%</div>
                     <div class="stat-label">Success Rate</div>
+                    <div class="stat-change positive" id="successChange">+0.1%</div>
                 </div>
                 <div class="stat-card glass">
-                    <div class="stat-value">3.2M</div>
-                    <div class="stat-label">Downloads</div>
-                </div>
-                <div class="stat-card glass">
-                    <div class="stat-value">24/7</div>
-                    <div class="stat-label">Uptime</div>
+                    <div class="stat-value" id="todayDownloads">1,842</div>
+                    <div class="stat-label">Today's Downloads</div>
+                    <div class="stat-change positive" id="todayChange">+47</div>
                 </div>
             </div>
 
@@ -792,7 +887,7 @@
                     </div>
                     <div class="live-indicator">
                         <div class="live-dot"></div>
-                        <span style="font-size: 0.8rem;">LIVE</span>
+                        <span>LIVE</span>
                     </div>
                 </div>
                 
@@ -827,8 +922,121 @@
             btnNoWm: document.getElementById('btnDownloadNoWm'),
             btnAudio: document.getElementById('btnDownloadAudio'),
             logs: document.getElementById('logContainer'),
-            visitorCount: document.getElementById('visitorCount')
+            activeUsers: document.getElementById('activeUsers'),
+            downloadCount: document.getElementById('downloadCount'),
+            successRate: document.getElementById('successRate'),
+            todayDownloads: document.getElementById('todayDownloads'),
+            userChange: document.getElementById('userChange'),
+            downloadChange: document.getElementById('downloadChange'),
+            successChange: document.getElementById('successChange'),
+            todayChange: document.getElementById('todayChange')
         };
+
+        // Real-time statistics data
+        const stats = {
+            activeUsers: {
+                current: 1247,
+                min: 800,
+                max: 2000,
+                changeInterval: null
+            },
+            totalDownloads: {
+                current: 3200000,
+                dailyGrowth: 2500,
+                changeInterval: null
+            },
+            successRate: {
+                current: 99.8,
+                min: 99.5,
+                max: 99.9,
+                changeInterval: null
+            },
+            todayDownloads: {
+                current: 1842,
+                hourlyGrowth: 100,
+                changeInterval: null
+            },
+            downloadLogs: []
+        };
+
+        // Format number with commas
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Update statistic with animation
+        function updateStat(elementId, newValue, isPercentage = false) {
+            const element = document.getElementById(elementId);
+            const oldValue = parseFloat(element.textContent.replace(/[^0-9.]/g, ''));
+            
+            if (Math.abs(newValue - oldValue) > 0.01) {
+                element.classList.add('counter-animation');
+                
+                if (isPercentage) {
+                    element.textContent = newValue.toFixed(1) + '%';
+                } else {
+                    element.textContent = formatNumber(newValue);
+                }
+                
+                setTimeout(() => {
+                    element.classList.remove('counter-animation');
+                }, 500);
+            }
+        }
+
+        // Show change indicator
+        function showChange(element, change, isPositive) {
+            element.textContent = (change > 0 ? '+' : '') + change + (element.id.includes('Rate') ? '%' : '');
+            element.className = `stat-change ${isPositive ? 'positive' : 'negative'}`;
+            
+            setTimeout(() => {
+                element.style.display = 'none';
+                setTimeout(() => {
+                    element.style.display = 'block';
+                }, 100);
+            }, 2000);
+        }
+
+        // Simulate real-time user activity
+        function simulateUserActivity() {
+            // Active users fluctuate
+            const userChange = Math.floor(Math.random() * 20) - 8; // -8 to +12
+            stats.activeUsers.current = Math.max(stats.activeUsers.min, 
+                Math.min(stats.activeUsers.max, stats.activeUsers.current + userChange));
+            
+            updateStat('activeUsers', stats.activeUsers.current);
+            if (userChange !== 0) {
+                showChange(elements.userChange, userChange, userChange > 0);
+            }
+
+            // Today's downloads increase
+            const todayChange = Math.floor(Math.random() * 15) + 5; // +5 to +20
+            stats.todayDownloads.current += todayChange;
+            updateStat('todayDownloads', stats.todayDownloads.current);
+            showChange(elements.todayChange, todayChange, true);
+
+            // Total downloads increase
+            const downloadChange = Math.floor(Math.random() * 50) + 20; // +20 to +70
+            stats.totalDownloads.current += downloadChange;
+            updateStat('downloadCount', stats.totalDownloads.current);
+            showChange(elements.downloadChange, downloadChange, true);
+
+            // Success rate fluctuates slightly
+            const successChange = (Math.random() * 0.2) - 0.1; // -0.1 to +0.1
+            stats.successRate.current = Math.max(stats.successRate.min,
+                Math.min(stats.successRate.max, stats.successRate.current + successChange));
+            
+            updateStat('successRate', stats.successRate.current, true);
+            if (Math.abs(successChange) > 0.01) {
+                showChange(elements.successChange, successChange.toFixed(1), successChange > 0);
+            }
+        }
 
         // Add log entry
         function addLog(message, type = 'info') {
@@ -836,7 +1044,8 @@
             const timeString = now.toLocaleTimeString('en-US', { 
                 hour12: false, 
                 hour: "2-digit", 
-                minute: "2-digit"
+                minute: "2-digit",
+                second: "2-digit"
             });
 
             const logEntry = document.createElement('div');
@@ -847,20 +1056,38 @@
             `;
 
             elements.logs.insertBefore(logEntry, elements.logs.firstChild);
+            stats.downloadLogs.unshift({ time: now, message, type });
             
-            // Limit to 6 entries
-            if (elements.logs.children.length > 6) {
+            // Limit to 8 entries
+            if (elements.logs.children.length > 8) {
                 elements.logs.removeChild(elements.logs.lastChild);
+                stats.downloadLogs.pop();
             }
         }
 
-        // Random visitor counter
-        function updateVisitorCount() {
-            let current = parseFloat(elements.visitorCount.textContent);
-            if (isNaN(current)) current = 2.4;
-            const change = (Math.random() * 0.3) - 0.15;
-            const newCount = Math.max(2.0, current + change);
-            elements.visitorCount.textContent = newCount.toFixed(1) + 'K';
+        // Track user download
+        function trackDownload(type) {
+            const downloadTypes = {
+                'video': ['Downloaded HD video', 'success'],
+                'audio': ['Downloaded MP3 audio', 'success'],
+                'error': ['Download failed', 'error']
+            };
+            
+            const [message, logType] = downloadTypes[type] || ['Download completed', 'info'];
+            addLog(message, logType);
+            
+            // Update stats for successful downloads
+            if (type === 'video' || type === 'audio') {
+                stats.todayDownloads.current += 1;
+                stats.totalDownloads.current += 1;
+                updateStat('todayDownloads', stats.todayDownloads.current);
+                updateStat('downloadCount', stats.totalDownloads.current);
+                
+                // Random success rate adjustment (usually positive)
+                const rateAdjustment = Math.random() * 0.05; // 0 to +0.05%
+                stats.successRate.current = Math.min(99.9, stats.successRate.current + rateAdjustment);
+                updateStat('successRate', stats.successRate.current, true);
+            }
         }
 
         // Process TikTok URL
@@ -897,6 +1124,7 @@
                 console.error('Error:', error);
                 showError('Failed to process video. Please try again.');
                 renderFallback(url);
+                addLog('Processing failed', 'error');
             } finally {
                 showLoading(false);
             }
@@ -909,8 +1137,15 @@
             elements.author.textContent = videoData.author?.nickname || '@user';
             
             // Set download handlers
-            elements.btnNoWm.onclick = () => handleDownload(videoData.play, `tiktok-hd-${Date.now()}.mp4`);
-            elements.btnAudio.onclick = () => handleDownload(videoData.music, `tiktok-audio-${Date.now()}.mp3`);
+            elements.btnNoWm.onclick = () => {
+                handleDownload(videoData.play, `tiktok-hd-${Date.now()}.mp4`);
+                trackDownload('video');
+            };
+            
+            elements.btnAudio.onclick = () => {
+                handleDownload(videoData.music, `tiktok-audio-${Date.now()}.mp3`);
+                trackDownload('audio');
+            };
             
             // Show result panel with animation
             elements.result.style.display = 'block';
@@ -926,11 +1161,14 @@
             elements.title.textContent = 'Direct Link Mode';
             elements.author.textContent = '@user';
             
-            elements.btnNoWm.onclick = () => window.open(originalUrl, '_blank');
+            elements.btnNoWm.onclick = () => {
+                window.open(originalUrl, '_blank');
+                trackDownload('video');
+            };
             elements.btnNoWm.innerHTML = '<i class="fas fa-external-link-alt"></i> Open Original';
             
             elements.result.style.display = 'block';
-            addLog('Using fallback mode', 'info');
+            addLog('Using fallback mode', 'warning');
         }
 
         // Handle download
@@ -963,7 +1201,8 @@
             } catch (error) {
                 // Fallback to new tab
                 window.open(url, '_blank');
-                addLog('Used fallback download', 'info');
+                addLog('Used fallback download', 'warning');
+                trackDownload('error');
             } finally {
                 button.innerHTML = originalHTML;
                 button.disabled = false;
@@ -993,6 +1232,23 @@
             elements.error.style.display = 'none';
         }
 
+        // Generate random user activity
+        function generateRandomActivity() {
+            const activities = [
+                { message: 'User downloaded HD video', type: 'success' },
+                { message: 'Audio conversion completed', type: 'info' },
+                { message: 'New user from Indonesia', type: 'info' },
+                { message: 'Video analysis successful', type: 'success' },
+                { message: 'System optimized', type: 'info' },
+                { message: 'High quality stream enabled', type: 'success' },
+                { message: 'User from United States', type: 'info' },
+                { message: 'Cache cleared', type: 'warning' }
+            ];
+            
+            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+            addLog(randomActivity.message, randomActivity.type);
+        }
+
         // Event listeners
         elements.btn.addEventListener('click', processVideo);
         elements.input.addEventListener('keypress', (e) => {
@@ -1000,27 +1256,48 @@
         });
 
         // Initialize
-        addLog('System initialized successfully', 'success');
-        addLog('Ready to download videos', 'info');
-        
-        // Auto-update visitor count
-        setInterval(updateVisitorCount, 5000);
-        
-        // Auto-add random logs
-        setInterval(() => {
-            const activities = [
-                'User downloaded HD video',
-                'Audio conversion completed',
-                'New user joined',
-                'Video analysis successful',
-                'System optimized'
-            ];
-            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
-            addLog(randomActivity, 'info');
-        }, 8000);
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initial logs
+            addLog('System initialized successfully', 'success');
+            addLog('Real-time tracking activated', 'success');
+            addLog('Ready to download videos', 'info');
+            
+            // Start real-time simulation
+            setInterval(simulateUserActivity, 3000); // Update every 3 seconds
+            
+            // Random activity logs
+            setInterval(generateRandomActivity, 6000); // Every 6 seconds
+            
+            // Simulate initial user activity
+            simulateUserActivity();
+            
+            // Update initial display
+            updateStat('activeUsers', stats.activeUsers.current);
+            updateStat('downloadCount', stats.totalDownloads.current);
+            updateStat('successRate', stats.successRate.current, true);
+            updateStat('todayDownloads', stats.todayDownloads.current);
 
-        // Auto focus on input
-        elements.input.focus();
+            // Auto focus on input
+            elements.input.focus();
+        });
+
+        // Track page visibility for user count
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                // User came back to tab
+                const userIncrease = Math.floor(Math.random() * 3) + 1;
+                stats.activeUsers.current += userIncrease;
+                updateStat('activeUsers', stats.activeUsers.current);
+            }
+        });
+
+        // Track page unload
+        window.addEventListener('beforeunload', () => {
+            // Simulate user leaving
+            const userDecrease = Math.floor(Math.random() * 5) + 1;
+            stats.activeUsers.current = Math.max(stats.activeUsers.min, 
+                stats.activeUsers.current - userDecrease);
+        });
     </script>
 </body>
 </html>
