@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KanaAi • TikTok Downloader & AI Assistant</title>
+    <title>TikTok Downloader • Modern & Fast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
@@ -23,8 +23,6 @@
             --text-dim: #e2c2cc;
             --gradient-primary: linear-gradient(135deg, #ff6b9d, #ff9ad5, #ffc2e2);
             --gradient-secondary: linear-gradient(135deg, #ff9ad5, #c724fe);
-            --ai-accent: #6b8cff;
-            --ai-gradient: linear-gradient(135deg, #6b8cff, #9ad5ff);
         }
 
         * { 
@@ -48,101 +46,6 @@
                 radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(199, 36, 254, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(255, 154, 213, 0.08) 0%, transparent 50%);
-        }
-
-        /* --- Navigation --- */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 20px;
-            background: rgba(10, 10, 15, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo .ai-part {
-            background: var(--ai-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 5px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-btn {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 10px;
-            background: transparent;
-            color: var(--text-dim);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-btn:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-btn.active {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
-        }
-
-        .nav-btn.ai-active {
-            background: var(--ai-gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(107, 140, 255, 0.3);
-        }
-
-        /* --- Content Sections --- */
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Animated Background Effects --- */
@@ -206,7 +109,7 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        /* --- Main Container --- */
+        /* --- Main Container (FIXED) --- */
         .app-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -214,12 +117,12 @@
             display: grid;
             grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
             gap: 25px;
-            min-height: calc(100vh - 80px);
+            min-height: 100vh;
             align-items: start;
             box-sizing: border-box;
         }
 
-        /* --- TikTok Downloader Styles --- */
+        /* --- Left Side: Main Content (FIXED) --- */
         .main-section {
             display: flex;
             flex-direction: column;
@@ -289,7 +192,7 @@
             word-wrap: break-word;
         }
 
-        /* --- Input Section --- */
+        /* --- Input Section (FIXED) --- */
         .input-section {
             position: relative;
             margin-top: 10px;
@@ -338,7 +241,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- Buttons --- */
+        /* --- Buttons (FIXED) --- */
         .btn {
             width: 100%;
             padding: 18px 25px;
@@ -375,201 +278,7 @@
                 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
-        /* --- AI Section Styles --- */
-        .ai-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            height: calc(100vh - 140px);
-        }
-
-        .ai-header {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(107, 140, 255, 0.15);
-            border: 1px solid rgba(107, 140, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: #9ad5ff;
-            font-weight: 600;
-            margin-bottom: 15px;
-            backdrop-filter: blur(10px);
-            animation: aiPulse 2s infinite;
-        }
-
-        @keyframes aiPulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(107, 140, 255, 0.3); }
-            50% { box-shadow: 0 0 20px rgba(107, 140, 255, 0.5); }
-        }
-
-        .ai-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            line-height: 1.1;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: var(--ai-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .ai-subtitle {
-            color: var(--text-dim);
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            line-height: 1.5;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .ai-chat-container {
-            display: flex;
-            flex-direction: column;
-            height: 600px;
-            gap: 20px;
-        }
-
-        .chat-messages {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 25px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            border: 1px solid rgba(107, 140, 255, 0.1);
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: var(--ai-accent);
-            border-radius: 3px;
-        }
-
-        .message {
-            max-width: 85%;
-            padding: 18px 22px;
-            border-radius: 18px;
-            line-height: 1.5;
-            animation: messageSlide 0.3s ease;
-        }
-
-        @keyframes messageSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .user-message {
-            align-self: flex-end;
-            background: var(--ai-gradient);
-            color: white;
-            border-bottom-right-radius: 5px;
-        }
-
-        .ai-message {
-            align-self: flex-start;
-            background: rgba(107, 140, 255, 0.1);
-            border: 1px solid rgba(107, 140, 255, 0.2);
-            color: var(--text-main);
-            border-bottom-left-radius: 5px;
-        }
-
-        .message-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .ai-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--ai-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        .chat-input-container {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .ai-input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(107, 140, 255, 0.2);
-            padding: 18px 25px;
-            border-radius: 16px;
-            color: white;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-            resize: none;
-            min-height: 60px;
-            max-height: 120px;
-        }
-
-        .ai-input:focus {
-            outline: none;
-            border-color: var(--ai-accent);
-            box-shadow: 0 0 0 4px rgba(107, 140, 255, 0.1);
-        }
-
-        .ai-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .ai-btn {
-            padding: 18px 30px;
-            background: var(--ai-gradient);
-            border: none;
-            border-radius: 16px;
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 140px;
-            justify-content: center;
-            box-shadow: 0 8px 25px rgba(107, 140, 255, 0.3);
-        }
-
-        .ai-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(107, 140, 255, 0.4);
-        }
-
-        .ai-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* --- Sidebar (for TikTok) --- */
+        /* --- Right Side: Stats & Features (FIXED) --- */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -619,7 +328,7 @@
             line-height: 1.2;
         }
 
-        /* --- Result Panel (TikTok) --- */
+        /* --- Result Panel --- */
         .result-panel {
             margin-top: 20px;
             display: none;
@@ -662,6 +371,94 @@
             }
         }
 
+        .thumbnail-container {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+        }
+
+        .thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .video-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .video-title {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+            background: linear-gradient(to right, #fff, #ff9ad5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-name {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        @media (min-width: 480px) {
+            .action-buttons {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .action-btn {
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        .action-btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .action-btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            color: var(--text-main);
+        }
+
         /* --- Activity Log --- */
         .activity-log {
             background: rgba(255, 255, 255, 0.02);
@@ -695,6 +492,28 @@
             overflow-y: auto;
             padding-right: 8px;
             width: 100%;
+        }
+
+        .log-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .log-content::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        .log-entry {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            animation: slideIn 0.3s ease;
+            border-left: 3px solid var(--accent-primary);
+            font-size: 0.85rem;
         }
 
         /* --- Platform Icons --- */
@@ -765,7 +584,7 @@
             75% { transform: translateX(5px); }
         }
 
-        /* --- Responsive Design --- */
+        /* --- Responsive Design (FIXED) --- */
         @media (max-width: 1200px) {
             .app-container {
                 grid-template-columns: 1fr;
@@ -776,10 +595,6 @@
             .main-section, .sidebar {
                 max-width: 100%;
             }
-
-            .ai-chat-container {
-                height: 500px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -787,34 +602,7 @@
                 padding: 12px;
                 gap: 15px;
             }
-
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-menu {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .nav-btn {
-                flex: 1;
-                justify-content: center;
-            }
-
-            .ai-chat-container {
-                height: 400px;
-            }
-
-            .chat-input-container {
-                flex-direction: column;
-            }
-
-            .ai-btn {
-                width: 100%;
-            }
-
+            
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -861,19 +649,31 @@
                 padding: 16px 20px;
                 font-size: 0.9rem;
             }
-
-            .ai-title {
-                font-size: 2rem;
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
             }
+        }
 
-            .ai-subtitle {
-                font-size: 0.9rem;
-            }
+        /* --- Utility Classes --- */
+        .text-center {
+            text-align: center;
+        }
 
-            .message {
-                max-width: 95%;
-                padding: 14px 18px;
-            }
+        .w-100 {
+            width: 100%;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .mt-15 {
+            margin-top: 15px;
+        }
+
+        .p-relative {
+            position: relative;
         }
     </style>
 </head>
@@ -885,232 +685,135 @@
         <div class="shape shape-3"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-sparkles"></i>
-                <span>Kana</span><span class="ai-part">Ai</span>
-            </div>
-            <div class="nav-menu">
-                <button class="nav-btn active" data-section="tiktok">
-                    <i class="fas fa-video"></i> TikTok Downloader
-                </button>
-                <button class="nav-btn" data-section="ai">
-                    <i class="fas fa-robot"></i> AI Assistant
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- TikTok Downloader Section -->
-    <section id="tiktokSection" class="content-section active">
-        <div class="app-container">
-            <!-- Left Column: Main Content -->
-            <main class="main-section">
-                <div class="header-section">
-                    <div class="badge glass">
-                        <i class="fas fa-sparkles"></i> TIKTOK DOWNLOADER • v3.5
-                    </div>
-                    <h1 class="hero-title">
-                        TikTok Downloader<br>
-                        <span style="opacity: 0.9; font-size: 0.9em;">in Pink Style</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Ekstrak video TikTok tanpa watermark dengan kualitas HD dan audio MP3 kualitas terbaik. 
-                        Didukung oleh teknologi AI generasi terbaru untuk pengalaman download yang cepat dan aman.
-                    </p>
+    <!-- Main App Container -->
+    <div class="app-container">
+        
+        <!-- Left Column: Main Content -->
+        <main class="main-section">
+            <div class="header-section">
+                <div class="badge glass">
+                    <i class="fas fa-sparkles"></i> TIKTOK DOWNLOADER • v3.5
                 </div>
-
-                <!-- Input Section -->
-                <div class="input-section">
-                    <div class="input-wrapper">
-                        <i class="fas fa-link input-icon"></i>
-                        <input type="text" 
-                               id="urlInput" 
-                               class="url-input glass" 
-                               placeholder="https://www.tiktok.com/@user/video/1234567890" 
-                               autocomplete="off">
-                    </div>
-                    
-                    <button id="btnProcess" class="btn btn-primary">
-                        <i class="fas fa-magic"></i> Extract Video
-                    </button>
-
-                    <!-- Loading Indicator -->
-                    <div class="loader-container" id="loader">
-                        <div class="loader">
-                            <div class="loader-bar"></div>
-                        </div>
-                    </div>
-
-                    <!-- Error Message -->
-                    <div class="error-message" id="errorMsg">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        <span id="errorText">Error message will appear here</span>
-                    </div>
-                </div>
-
-                <!-- Results Panel -->
-                <div id="resultArea" class="result-panel">
-                    <div class="video-card glass">
-                        <div class="video-content">
-                            <div class="thumbnail-container">
-                                <img id="thumbImg" src="" alt="Video Thumbnail">
-                            </div>
-                            
-                            <div class="video-info">
-                                <h2 class="video-title" id="titleTxt">Video Title Will Appear Here</h2>
-                                
-                                <div class="author-info">
-                                    <span class="author-name" id="authorTxt">@tiktokuser</span>
-                                </div>
-                                
-                                <div class="action-buttons">
-                                    <button class="action-btn action-btn-primary" id="btnDownloadNoWm">
-                                        <i class="fas fa-download"></i> Download HD
-                                    </button>
-                                    <button class="action-btn action-btn-secondary" id="btnDownloadAudio">
-                                        <i class="fas fa-music"></i> MP3 Audio
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <!-- Right Column: Stats & Activity -->
-            <aside class="sidebar">
-                <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card glass">
-                        <div class="stat-value" id="visitorCount">1.2k</div>
-                        <div class="stat-label">Active Users</div>
-                    </div>
-                    <div class="stat-card glass">
-                        <div class="stat-value">99.9%</div>
-                        <div class="stat-label">Success Rate</div>
-                    </div>
-                    <div class="stat-card glass">
-                        <div class="stat-value">3.2M</div>
-                        <div class="stat-label">Downloads</div>
-                    </div>
-                    <div class="stat-card glass">
-                        <div class="stat-value">24/7</div>
-                        <div class="stat-label">Uptime</div>
-                    </div>
-                </div>
-
-                <!-- Activity Log -->
-                <div class="activity-log glass">
-                    <div class="log-header">
-                        <div class="log-title">
-                            <i class="fas fa-stream"></i> Live Activity
-                        </div>
-                        <div class="live-indicator">
-                            <div class="live-dot"></div>
-                            <span style="font-size: 0.8rem;">LIVE</span>
-                        </div>
-                    </div>
-                    
-                    <div class="log-content" id="logContainer">
-                        <!-- Log entries will be inserted here -->
-                    </div>
-                </div>
-
-                <!-- Platform Icons -->
-                <div class="platforms glass">
-                    <i class="fab fa-android platform-icon"></i>
-                    <i class="fab fa-apple platform-icon"></i>
-                    <i class="fab fa-windows platform-icon"></i>
-                    <i class="fas fa-globe platform-icon"></i>
-                    <i class="fas fa-bolt platform-icon"></i>
-                </div>
-            </aside>
-        </div>
-    </section>
-
-    <!-- AI Assistant Section -->
-    <section id="aiSection" class="content-section">
-        <div class="ai-container">
-            <div class="ai-header">
-                <div class="ai-badge glass">
-                    <i class="fas fa-robot"></i> KanaAi • AI Assistant
-                </div>
-                <h1 class="ai-title">KanaAI Assistant</h1>
-                <p class="ai-subtitle">
-                    Powered by Gemini AI. Tanyakan apa saja - Saya di sini untuk membantu Anda dengan kreativitas, 
-                    analisis, pemrograman, dan banyak lagi!
+                <h1 class="hero-title">
+                    TikTok Downloader<br>
+                    <span style="opacity: 0.9; font-size: 0.9em;">in Pink Style</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Ekstrak video TikTok tanpa watermark dengan kualitas HD dan audio MP3 kualitas terbaik. 
+                    Didukung oleh teknologi AI generasi terbaru untuk pengalaman download yang cepat dan aman.
                 </p>
             </div>
 
-            <div class="ai-chat-container">
-                <div class="chat-messages glass" id="chatMessages">
-                    <!-- AI Welcome Message -->
-                    <div class="message ai-message">
-                        <div class="message-header">
-                            <div class="ai-avatar">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <span>KanaAi</span>
-                        </div>
-                        <p>Halo! Saya KanaAi, asisten AI Anda yang didukung oleh Gemini. Saya dapat membantu Anda dengan berbagai hal seperti:</p>
-                        <ul style="margin-top: 8px; padding-left: 20px;">
-                            <li>Menjawab pertanyaan umum</li>
-                            <li>Membantu dengan pemrograman dan kode</li>
-                            <li>Analisis kreatif dan penulisan</li>
-                            <li>Diskusi tentang berbagai topik</li>
-                            <li>Dan banyak lagi!</li>
-                        </ul>
-                        <p style="margin-top: 10px;">Apa yang bisa saya bantu hari ini? 😊</p>
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <i class="fas fa-link input-icon"></i>
+                    <input type="text" 
+                           id="urlInput" 
+                           class="url-input glass" 
+                           placeholder="https://www.tiktok.com/@user/video/1234567890" 
+                           autocomplete="off">
+                </div>
+                
+                <button id="btnProcess" class="btn btn-primary">
+                    <i class="fas fa-magic"></i> Extract Video
+                </button>
+
+                <!-- Loading Indicator -->
+                <div class="loader-container" id="loader">
+                    <div class="loader">
+                        <div class="loader-bar"></div>
                     </div>
                 </div>
 
-                <div class="chat-input-container">
-                    <textarea 
-                        class="ai-input glass" 
-                        id="aiInput" 
-                        placeholder="Tanyakan sesuatu pada KanaAi..." 
-                        rows="3"
-                    ></textarea>
-                    <button class="ai-btn" id="aiSendBtn">
-                        <i class="fas fa-paper-plane"></i> Kirim
-                    </button>
+                <!-- Error Message -->
+                <div class="error-message" id="errorMsg">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    <span id="errorText">Error message will appear here</span>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <!-- Results Panel -->
+            <div id="resultArea" class="result-panel">
+                <div class="video-card glass">
+                    <div class="video-content">
+                        <div class="thumbnail-container">
+                            <img id="thumbImg" src="" alt="Video Thumbnail">
+                        </div>
+                        
+                        <div class="video-info">
+                            <h2 class="video-title" id="titleTxt">Video Title Will Appear Here</h2>
+                            
+                            <div class="author-info">
+                                <span class="author-name" id="authorTxt">@tiktokuser</span>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="action-btn action-btn-primary" id="btnDownloadNoWm">
+                                    <i class="fas fa-download"></i> Download HD
+                                </button>
+                                <button class="action-btn action-btn-secondary" id="btnDownloadAudio">
+                                    <i class="fas fa-music"></i> MP3 Audio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Column: Stats & Activity -->
+        <aside class="sidebar">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-value" id="visitorCount">1.2k</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-value">3.2M</div>
+                    <div class="stat-label">Downloads</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+
+            <!-- Activity Log -->
+            <div class="activity-log glass">
+                <div class="log-header">
+                    <div class="log-title">
+                        <i class="fas fa-stream"></i> Live Activity
+                    </div>
+                    <div class="live-indicator">
+                        <div class="live-dot"></div>
+                        <span style="font-size: 0.8rem;">LIVE</span>
+                    </div>
+                </div>
+                
+                <div class="log-content" id="logContainer">
+                    <!-- Log entries will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Platform Icons -->
+            <div class="platforms glass">
+                <i class="fab fa-android platform-icon"></i>
+                <i class="fab fa-apple platform-icon"></i>
+                <i class="fab fa-windows platform-icon"></i>
+                <i class="fas fa-globe platform-icon"></i>
+                <i class="fas fa-bolt platform-icon"></i>
+            </div>
+        </aside>
+    </div>
 
     <script>
-        // Navigation switching
-        document.querySelectorAll('.nav-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const sectionId = this.dataset.section;
-                
-                // Update active button
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    btn.classList.remove('active', 'ai-active');
-                    if (btn.dataset.section === 'ai') {
-                        btn.classList.add('ai-active');
-                    }
-                });
-                this.classList.add('active');
-                
-                // Show selected section
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(sectionId + 'Section').classList.add('active');
-                
-                // Update badge color for AI section
-                if (sectionId === 'ai') {
-                    document.querySelector('.ai-badge').style.animation = 'aiPulse 2s infinite';
-                }
-            });
-        });
-
-        // TikTok Downloader Code (from original)
+        // Initialize elements
         const elements = {
             input: document.getElementById('urlInput'),
             btn: document.getElementById('btnProcess'),
@@ -1145,6 +848,7 @@
 
             elements.logs.insertBefore(logEntry, elements.logs.firstChild);
             
+            // Limit to 6 entries
             if (elements.logs.children.length > 6) {
                 elements.logs.removeChild(elements.logs.lastChild);
             }
@@ -1178,6 +882,7 @@
             addLog('Processing video URL...', 'info');
 
             try {
+                // Using TikTok API
                 const apiUrl = `https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`;
                 const response = await fetch(apiUrl);
                 const data = await response.json();
@@ -1203,9 +908,11 @@
             elements.title.textContent = videoData.title || 'TikTok Video';
             elements.author.textContent = videoData.author?.nickname || '@user';
             
+            // Set download handlers
             elements.btnNoWm.onclick = () => handleDownload(videoData.play, `tiktok-hd-${Date.now()}.mp4`);
             elements.btnAudio.onclick = () => handleDownload(videoData.music, `tiktok-audio-${Date.now()}.mp3`);
             
+            // Show result panel with animation
             elements.result.style.display = 'block';
             setTimeout(() => {
                 elements.result.style.opacity = '1';
@@ -1237,6 +944,7 @@
             addLog(`Starting download: ${filename}`, 'info');
 
             try {
+                // Try direct download
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Network error');
                 
@@ -1253,6 +961,7 @@
                 
                 addLog(`Downloaded: ${filename}`, 'success');
             } catch (error) {
+                // Fallback to new tab
                 window.open(url, '_blank');
                 addLog('Used fallback download', 'info');
             } finally {
@@ -1261,7 +970,7 @@
             }
         }
 
-        // UI Helper functions for TikTok
+        // UI Helper functions
         function showLoading(show) {
             elements.loader.style.display = show ? 'block' : 'none';
             elements.btn.disabled = show;
@@ -1284,115 +993,10 @@
             elements.error.style.display = 'none';
         }
 
-        // Event listeners for TikTok
+        // Event listeners
         elements.btn.addEventListener('click', processVideo);
         elements.input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') processVideo();
-        });
-
-        // AI Assistant Code
-        const aiElements = {
-            input: document.getElementById('aiInput'),
-            sendBtn: document.getElementById('aiSendBtn'),
-            chatMessages: document.getElementById('chatMessages')
-        };
-
-        // Gemini API Configuration
-        const GEMINI_API_KEY = 'gen-lang-client-0717320577';
-        const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
-
-        // Add message to chat
-        function addMessage(content, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
-            
-            if (isUser) {
-                messageDiv.innerHTML = `
-                    <div class="message-header">
-                        <div class="ai-avatar" style="background: var(--gradient-primary);">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <span>Anda</span>
-                    </div>
-                    <p>${content}</p>
-                `;
-            } else {
-                messageDiv.innerHTML = `
-                    <div class="message-header">
-                        <div class="ai-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <span>KanaAi</span>
-                    </div>
-                    <p>${content}</p>
-                `;
-            }
-            
-            aiElements.chatMessages.appendChild(messageDiv);
-            aiElements.chatMessages.scrollTop = aiElements.chatMessages.scrollHeight;
-        }
-
-        // Send message to Gemini AI
-        async function sendMessage() {
-            const message = aiElements.input.value.trim();
-            
-            if (!message) return;
-            
-            // Add user message
-            addMessage(message, true);
-            aiElements.input.value = '';
-            
-            // Disable button and show loading
-            aiElements.sendBtn.disabled = true;
-            aiElements.sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking...';
-            
-            try {
-                const response = await fetch(GEMINI_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        contents: [{
-                            parts: [{
-                                text: message
-                            }]
-                        }]
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (data.candidates && data.candidates[0]) {
-                    const aiResponse = data.candidates[0].content.parts[0].text;
-                    addMessage(aiResponse, false);
-                } else {
-                    throw new Error('No response from AI');
-                }
-            } catch (error) {
-                console.error('AI Error:', error);
-                addMessage('Maaf, terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi.', false);
-            } finally {
-                // Re-enable button
-                aiElements.sendBtn.disabled = false;
-                aiElements.sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim';
-            }
-        }
-
-        // Event listeners for AI
-        aiElements.sendBtn.addEventListener('click', sendMessage);
-        
-        aiElements.input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-
-        // Auto-resize textarea
-        aiElements.input.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
         });
 
         // Initialize
@@ -1415,7 +1019,7 @@
             addLog(randomActivity, 'info');
         }, 8000);
 
-        // Auto focus on TikTok input
+        // Auto focus on input
         elements.input.focus();
     </script>
 </body>
